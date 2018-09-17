@@ -1,7 +1,7 @@
 <div  class="columna-12">
     <div class="card">
         <div class="card-encabezado">
-            <h4 class="titulo">Impresoras por departamento ni2</h4>
+            <h4 class="titulo">Impresoras por departamento</h4>
             <p class="categoria">Muestra las impresoras que se encuentran en uso</p>
         </div>
         <div class="card-contenido tabla-responsive">
