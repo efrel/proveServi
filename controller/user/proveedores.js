@@ -2,7 +2,6 @@ app.controller('proveedores', function($scope, $rootScope, $http, $location) {
     $rootScope.titulo = "Proveedor";
     
     $scope.guardarPro = function(dataPro){
-        console.log(dataPro);
         $http({
             method: "POST",
             url: "services/saveProve.php",

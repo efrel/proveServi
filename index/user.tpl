@@ -25,6 +25,9 @@
     <link rel="stylesheet" type="text/css" href="./assets/css/angular-datepicker.css">
     <script src="./assets/js/angular-datepicker.js"></script>
 
+    <!-- ANIMACION PARA NG-IF -->
+     <link rel="stylesheet" type="text/css" href="./assets/css/animation-if.css">
+
     <!-- ARCHIVOS -->
     <link rel="stylesheet" type="text/css" href="./assets/css/estiloFile.css">
     <link rel="stylesheet" type="text/css" href="./assets/css/material.blue_grey-red.min.css">
@@ -79,6 +82,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#!ingreImpre">Ingresar Impresoras</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#!facturacion">Facturación</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#!proveedores">Proveedores</a>

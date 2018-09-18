@@ -25,14 +25,14 @@
                     <span ng-show="!provee.$pristine && provee.contacto.$error.required" class="error letra">campo requerido</span>
                 </div>
             </div>
-            <div class="columna-6">
+            <div class="columna-4">
                 <div class="form-grupo form-texto-animado">
                     <input type="text" class="input-text" required name="numTel" ng-model="pro.numTel">
                     <label for="numTel">Número de teléfono</label>
                     <span ng-show="!provee.$pristine && provee.numTel.$error.required" class="error letra">campo requerido</span>
                 </div>
             </div>
-            <div class="columna-6">
+            <div class="columna-5">
                 <div class="form-grupo form-texto-animado">
                     <input type="text" class="input-text" required name="correo" ng-model="pro.correo">
                     <label for="correo">Correo Electronico</label>

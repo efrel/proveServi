@@ -1,8 +1,6 @@
 app.controller('detaImpre', ["$scope", "upload", "$rootScope", "$http", "$location", "$filter", function($scope, upload, $rootScope, $http, $location, $filter) {
   $rootScope.idImpre;
 
-  console.log($rootScope.idImpre);
-
   var info = {
     id: $rootScope.idImpre
   };
@@ -28,8 +26,6 @@ app.controller('detaImpre', ["$scope", "upload", "$rootScope", "$http", "$locati
             modelo: x.modelo,
             serie: x.serie
           };
-
-          console.log(response.data.var);
 
           $scope.totalBn = "";
           $scope.totalCl = "";
