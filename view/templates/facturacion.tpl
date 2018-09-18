@@ -146,6 +146,7 @@
                 <form name="indiGraph" novalidate>
                     <table class="tabla" ng-show="detalleImpre.length">
                         <thead style="text-align:center">
+                        <th>Ubicación</th>
                         <th>Fecha</th>
                         <th>B/N Inicio</th>
                         <th>B/N Final</th>
@@ -156,6 +157,7 @@
                         </thead>
                         <tbody>
                         <tr ng-repeat="d in detalleImpre">
+                            <td>{{d.ubicacion}}</td>
                             <td>{{d.fecha}}</td>
                             <td>{{d.bn_inicio}}</td>
                             <td>{{d.bn_final}}</td>

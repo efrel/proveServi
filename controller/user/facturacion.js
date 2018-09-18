@@ -18,7 +18,10 @@ app.controller('facturacion', function($scope, $rootScope, $http, $filter, $loca
     });
 
     $scope.crearFac = function(fac){
-        //cargarDetalleImpre();
+        cargarDetalleImpre(fac);
+
+        console.log($scope.fac.fecha);
+        
         $rootScope.provee = fac;
         //cargar la fk del tipo de proveedor que es.
         var param = {
@@ -70,9 +73,12 @@ app.controller('facturacion', function($scope, $rootScope, $http, $filter, $loca
         );
 
         $scope.saveDeta = function(deta){
-            deta['fecha'] = $filter('date')($rootScope.provee.fecha, 'yyyy-MM-dd');
-    
+            deta['id_pro'] = fac.proveedor;
+            deta['fecha'] = $filter('date')(fac.fecha, 'yyyy-MM-dd');
+
             console.log(deta);
+
+            $rootScope.detalleImpre = deta;
     
             $http({
                 method: "POST",
@@ -84,8 +90,8 @@ app.controller('facturacion', function($scope, $rootScope, $http, $filter, $loca
             }).then(
                 function success(response) {
                     alert("Detalle guardado con éxito.");
-                    cargarDetalleImpre();
-                    $scope.detaImpr = false;
+
+                    cargarDetalleImpre(fac);
                 },
                 function error(response) {
                     alert("Error al guardar datos.");
@@ -94,23 +100,27 @@ app.controller('facturacion', function($scope, $rootScope, $http, $filter, $loca
         }
 
         //CARGA LOS DATOS DEL DETALLE DE CADA IMPRESORA
-        function cargarDetalleImpre(){
+        function cargarDetalleImpre(deta2){
+            deta2['fecha'] = $filter('date')(deta2.fecha, 'MM');
+            
             $http({
                 method: "POST",
                 url: "services/selectDetaImpre.php",
-                data: $.param(info),
+                data: $.param(deta2),
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
                 }
             }).then(
                 function success(response) {
-                    $scope.detalleImpre = response.data.detaImpre;
+                    $scope.detalleImpre = response.data;
                 },
                 function error(response) {
                     alert('Se produjo un error al cargar el detalle de impresoras.');
                 }
             );
         }
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        
     }
 
 });
