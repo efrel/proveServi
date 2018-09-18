@@ -81,6 +81,9 @@
                 <a class="nav-link" href="#!ingreImpre">Ingresar Impresoras</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="#!proveedores">Proveedores</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="#!contrato">Contratos</a>
             </li>
             <li class="nav-item">
