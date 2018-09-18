@@ -9,7 +9,7 @@
         $pass = isset($_POST["clave"])? $_POST["clave"]: '';
 
         validar($user, $pass);
-
+         
     }
 
 function validar($user, $pass){
