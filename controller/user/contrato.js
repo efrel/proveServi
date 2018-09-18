@@ -11,7 +11,7 @@ app.controller('contrato', function($scope, $rootScope, $http, $location) {
             }
         }).then(
             function success(response) {
-
+                alert('Datos guardados correctamente');
             },
             function error(response) {
                 alert('Se produjo un error al cargar el proveedor.');
