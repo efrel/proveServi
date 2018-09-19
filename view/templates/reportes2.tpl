@@ -26,14 +26,34 @@
                 </button>
             </div>
         </form>
+        <div class="columna-12">
+            <div class="columna-4">
+                <div class="form-grupo form-texto-animado">
+                    <select class="input-text" name="impresoras" ng-change="generarImpre(impresora,valFecha,valProv)" ng-model="impresora" required>
+                        <option ng-repeat="print in impresoras" value="{{print.id_printf}}" ng-selected="{{print.id_printf == impresora}}">{{print.ubicacion.substr(24)}}</option>
+                    </select>
+                    <label for="impresora">Impresoras</label>
+                </div>
+            </div>
+        </div>
         <div class="columna-6">
             <canvas id="bar" class="chart chart-bar"
                     chart-data="data" chart-labels="labels" chart-series="series" chart-options="options">
             </canvas>
         </div>
         <div class="columna-6">
-            <canvas id="bar2" class="chart chart-bar"
-                    chart-data="data2" chart-labels="labels2" chart-series="series2" chart-options="options2">
+            <canvas id="barConsumoPrint" class="chart chart-bar"
+                    chart-data="dataConsumoPrint" chart-labels="labelsConsumoPrint" chart-series="seriesConsumoPrint" chart-options="optionsConsumoPrint">
+            </canvas>
+        </div>
+        <div class="columna-6">
+            <canvas id="barPrint" class="chart chart-bar"
+                    chart-data="dataPrint" chart-labels="labelsPrint" chart-series="seriesPrint" chart-options="optionsPrint">
+            </canvas>
+        </div>
+        <div class="columna-6">
+            <canvas id="barPrintDepa" class="chart chart-bar"
+                    chart-data="dataPrintDepa" chart-labels="labelsPrintDepa" chart-series="seriesPrintDepa" chart-options="optionsPrintDepa">
             </canvas>
         </div>
     </div>

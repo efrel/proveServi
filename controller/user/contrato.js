@@ -9,7 +9,7 @@ app.controller('contrato', function($scope, $rootScope, $http, $filter, $locatio
         }
     }).then(
         function success(response) {
-            $scope.proveedores = response.data;
+            $scope.proveedores = response.data.prov;
             console.log($scope.proveedores[0].fk_tp)
         },
         function error(response) {
