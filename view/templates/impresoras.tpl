@@ -13,7 +13,7 @@
                       <th>Serie</th>
                     </thead>
                     <tbody>
-                      <tr ng-click="detaImpre(d.id_printf)" ng-repeat="d in dataResult">
+                      <tr ng-repeat="d in dataResult">
                           <td>{{d.ubicacion}}</td>
                           <td>{{d.modelo}}</td>
                           <td>{{d.serie}}</td>

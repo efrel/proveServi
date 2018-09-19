@@ -20,9 +20,4 @@ app.controller('impresoras', function($scope, $rootScope, $http, $location) {
         );
     }
 
-    $scope.detaImpre = function (id){
-        $rootScope.idImpre = id;
-        $location.path('detaImpre');
-    }
-
 });

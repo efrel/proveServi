@@ -527,7 +527,7 @@ input[type=checkbox]:checked:after {
 	color: #003399;
 	font-weight:bold;
 }
-/*******************
+/*******************/
 .selectpicker {
   display: none;
 }
