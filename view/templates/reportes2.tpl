@@ -26,8 +26,15 @@
                 </button>
             </div>
         </form>
-        <canvas id="bar" class="chart chart-bar"
-                chart-data="data" chart-labels="labels"> chart-series="series"
-        </canvas
+        <div class="columna-6">
+            <canvas id="bar" class="chart chart-bar"
+                    chart-data="data" chart-labels="labels" chart-series="series" chart-options="options">
+            </canvas>
+        </div>
+        <div class="columna-6">
+            <canvas id="bar2" class="chart chart-bar"
+                    chart-data="data2" chart-labels="labels2" chart-series="series2" chart-options="options2">
+            </canvas>
+        </div>
     </div>
 </div>

@@ -47,23 +47,53 @@ app.controller('reportes2', function($scope, $rootScope, $http, $filter, $locati
                 var diferenciaColor = parseInt(sumaCfinal) - parseInt(sumaCini);
 
                 var total_costoBN = parseInt(diferenciaBN) * parseFloat(contra_costBN);
-                var total_costoC = parseInt(diferenciaColor) * parseFloat(contra_cantC);
+                var total_costoC = parseInt(diferenciaColor) * parseFloat(contra_costC);
                 var total_costoMes = parseFloat(total_costoBN) + parseFloat(total_costoC);
-                console.log(diferenciaBN, " ",total_costoBN, contra_costBN);
-                $scope.labels = ['Impresiones BN', 'Impresiones Color', 'Monto mensual'];
+                console.log(total_costoBN,total_costoC, total_costoMes);
+                $scope.labels = ['Monto mensual','Impresiones BN', 'Impresiones Color'];
                 $scope.series = ['Contrato', 'Consumo'];
 
                 $scope.data = [
-                    [contra_cantBN, contra_cantC, contra_monto],
-                    [total_costoBN, total_costoC, total_costoMes]
+                    [contra_monto],
+                    [parseFloat(total_costoMes).toFixed(2),parseFloat(total_costoBN).toFixed(2), parseFloat(total_costoC).toFixed(2)]
                 ];
+                $scope.options = {
+                    title: {
+                        display: true,
+                        text: 'Consumo mensual en dolares'
+                    },
+                    legend: {
+                        display: true,
+                        labels: {
+                            fontColor: 'rgb(0, 0, 0)'
+                        },
+                        position: 'bottom'
+                    }
+                }
+
+                $scope.labels2 = ['Impresiones BN', 'Impresiones Color'];
+                $scope.series2 = ['Contrato', 'Consumo'];
+
+                $scope.data2 = [
+                    [contra_cantBN, contra_cantC],
+                    [diferenciaBN, diferenciaColor]
+                ];
+                $scope.options2 = {
+                    title: {
+                        display: true,
+                            text: 'Consumo mensual de impresiones'
+                    },
+                    legend: {
+                        display: true,
+                        labels: {
+                            fontColor: 'rgb(0, 0, 0)'
+                        },
+                        position: 'bottom'
+                    }
+                }
             },
             function error(response) {
             }
         );
     }
-
-
-
-
 });
