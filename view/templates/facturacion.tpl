@@ -18,37 +18,19 @@
            <div class="columna-4">
                 <div class="form-grupo form-texto-animado">
                     <input type="date" class="input-text" name="fecha" ng-model="fac.fecha" required>
-                    <label for="fecha">Fecha</label>
+                    <label class="labelDate" for="fecha">Fecha</label>
                     <span ng-show="!factu.$pristine && factu.fecha.$error.required" class="error letra">Campo requerido</span>
                 </div>
             </div>
-
-              <!-- SUBIR ARCHIVO 
-              <div class="columna-8">
-                <div class="file_input_div">
-                  <div class="file_input">
-                    <label class="image_input_button mdl-button mdl-js-button mdl-button--fab mdl-button--primary mdl-button--mini-fab mdl-js-ripple-effect">
-                      <i class="material-icons">file_upload</i>
-                      <input id="file_input_file" class="none" type="file" name="file" uploader-model="file" accept="application/pdf, application/msword, application/vnd.openxmlformats-officedocument.wordprocessingml.document, image/png, image/jpeg" ngf-max-size="2MB" required>
-                      <span ng-show="!factu.$pristine && factu.file.$error.required" class="error letra">El el archivo es obligatorio</span>
-                      <span ng-show="!factu.$pristine && factu.file.$error.maxSize" class="error letra">Tamaño máximo 2 MB</span>
-                      <span ng-if="mensa" class="error letra">{{ms}}</span>
-                    </label>
-                  </div>
-                  <div id="file_input_text_div" class="form-grupo form-texto-animado">
-                    <input type="text" class="input-text file_input_text mdl-textfield__input" name="file_input_text" id="file_input_text" disabled readonly placeholder="Haga clic en el icono para seleccionar el archivo.">
-                    <label class="mdl-textfield__label" for="file_input_text"></label>
-                  </div>
-                  <span ng-show="!factu.$pristine && factu.file_input_text.$invalid && !factu.file_input_text.$pristine" class="error letra">El archivo es obligatorio.</span>
-                 <span ng-if="mensa" class="error letra">{{ms}}</span> 
-                </div>
-              </div>
-              FIN SUBIR ARCHIVO -->
            
             <div class="columna-3">
                 <button type="submit" class="btn form odoo pull-right" ng-click="crearFac(fac)" ng-disabled="!factu.$valid">
                     <i class="fa fa fa-plus"></i>
                     Crear
+                </button> 
+                <button type="button" class="btn form odoo pull-right" ng-click="limpiar()" ng-disabled="!factu.$valid">
+                    <i class="fa fa fa-eraser"></i>
+                    Limpiar
                 </button> 
             </div>
 
@@ -72,7 +54,7 @@
                             <select class="input-text" name="proveedor" ng-model="deta2.impre" required>
                                 <option ng-repeat="im in impresoras" value="{{im.id_printf}}" ng-selected="{{im.id_printf == deta2.impre}}">{{im.ubicacion}}</option>
                             </select>
-                            <label for="proveedor">Proveedor </label>
+                            <label for="proveedor">Ubicación</label>
                             <span ng-show="!detaImpre2.$pristine && detaImpre2.proveedor.$error.required" class="error letra">Campo requerido</span>
                         </div>
                     </div>
@@ -95,7 +77,7 @@
                     </div>
                     <div class="columna-4">
                         <div class="form-grupo form-texto-animado">
-                            <input type="text" class="input-text" required name="totalBn" ng-model="totalBn" readonly ng-pattern="/^[0-9.]*$/">
+                            <input type="text" class="input-text" required name="totalBn" ng-model="deta2.totalBn" readonly ng-pattern="/^[0-9.]*$/">
                             <label for="totalBn">B/N Total</label>
                             <span ng-show="!detaImpre2.$pristine && detaImpre2.totalBn.$error.required" class="error letra">Campo requerido</span>
                             <span ng-show="!detaImpre2.$pristine && detaImpre2.totalBn.$error.pattern" class="error letra">Solo números</span>
@@ -120,7 +102,7 @@
                     </div>
                     <div class="columna-4">
                         <div class="form-grupo form-texto-animado">
-                            <input type="text" class="input-text" required name="totalCl" ng-model="totalCl" readonly ng-pattern="/^[0-9.]*$/">
+                            <input type="text" class="input-text" required name="totalCl" ng-model="deta2.totalCl" readonly ng-pattern="/^[0-9.]*$/">
                             <label for="totalCl">Color Total</label>
                             <span ng-show="!detaImpre2.$pristine && detaImpre2.totalCl.$error.required" class="error letra">Campo requerido</span>
                             <span ng-show="!detaImpre2.$pristine && detaImpre2.totalCl.$error.pattern" class="error letra">Solo números</span>

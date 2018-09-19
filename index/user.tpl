@@ -94,14 +94,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="#!contrato">Contratos</a>
             </li>
-            <li class="nav-item">
+            <!--<li class="nav-item">
                 <a class="nav-link" href="#!configProv">Configuración</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#!reporteImpre">Reportes</a>
-            </li>
+            </li>-->
             <li class="nav-item">
-                <a class="nav-link" href="#!reportes2">Reportes2</a>
+                <a class="nav-link" href="#!reportes2">Reportes</a>
             </li>
         </ul>
         <a onclick="cerrar()">

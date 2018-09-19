@@ -1,5 +1,7 @@
 app.controller('facturacion', function($scope, $rootScope, $http, $filter, $location) {
     $rootScope.titulo = "Facturación";
+    $scope.deta2 = {};
+    $scope.fac = {};
 
     $scope.detaImpr = false;
 
@@ -19,8 +21,6 @@ app.controller('facturacion', function($scope, $rootScope, $http, $filter, $loca
 
     $scope.crearFac = function(fac){
         cargarDetalleImpre(fac);
-
-        console.log($scope.fac.fecha);
         
         $rootScope.provee = fac;
         //cargar la fk del tipo de proveedor que es.
@@ -45,15 +45,15 @@ app.controller('facturacion', function($scope, $rootScope, $http, $filter, $loca
             }
         );
 
-        $scope.totalBn = "";
-        $scope.totalCl = "";
+        $scope.deta2.totalBn = "";
+        $scope.deta2.totalCl = "";
 
         $scope.bnTotal = function(bnInicio, bnFinal){
-          $scope.totalBn = bnFinal - bnInicio;
+          $scope.deta2.totalBn = bnFinal - bnInicio;
         }
 
         $scope.clTotal = function(clInicio, clFinal){
-          $scope.totalCl = clFinal - clInicio;
+          $scope.deta2.totalCl = clFinal - clInicio;
         }
 
         //cargar todas las ubicaciones de las impresoras rejistrada anteriormente.en cotrato
@@ -90,6 +90,7 @@ app.controller('facturacion', function($scope, $rootScope, $http, $filter, $loca
             }).then(
                 function success(response) {
                     alert("Detalle guardado con éxito.");
+                    $scope.deta2 = {};
 
                     cargarDetalleImpre(fac);
                 },
@@ -99,20 +100,29 @@ app.controller('facturacion', function($scope, $rootScope, $http, $filter, $loca
             );
         }
 
+        //LIMPIAR DATOS DEL FORMULARIO COMPLETO
+        $scope.limpiar = function(){
+            $scope.deta2 = {};
+            $scope.fac = {};
+            $scope.detaImpr = false;
+        }
+
         //CARGA LOS DATOS DEL DETALLE DE CADA IMPRESORA
-        function cargarDetalleImpre(deta2){
-            deta2['fecha'] = $filter('date')(deta2.fecha, 'MM');
+        function cargarDetalleImpre(detalle){
+            detalle['fecha'] = $filter('date')(detalle.fecha, 'yyyy-MM-dd');
             
             $http({
                 method: "POST",
                 url: "services/selectDetaImpre.php",
-                data: $.param(deta2),
+                data: $.param(detalle),
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
                 }
             }).then(
                 function success(response) {
                     $scope.detalleImpre = response.data;
+                    console.log($scope.detalleImpre);
+                    
                 },
                 function error(response) {
                     alert('Se produjo un error al cargar el detalle de impresoras.');

@@ -416,6 +416,7 @@ a:hover, a:active {
     font-size: 14px;
     color: #00a09d;
 }
+
 /*****************Botones ****************************/
 .btn {
 	display: inline-block;
@@ -527,7 +528,7 @@ input[type=checkbox]:checked:after {
 	color: #003399;
 	font-weight:bold;
 }
-/*******************
+/*******************/
 .selectpicker {
   display: none;
 }
