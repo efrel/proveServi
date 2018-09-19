@@ -18,7 +18,7 @@
            <div class="columna-4">
                 <div class="form-grupo form-texto-animado">
                     <input type="date" class="input-text" name="fecha" ng-model="fac.fecha" required>
-                    <label for="fecha">Fecha</label>
+                    <label class="labelDate" for="fecha">Fecha</label>
                     <span ng-show="!factu.$pristine && factu.fecha.$error.required" class="error letra">Campo requerido</span>
                 </div>
             </div>
