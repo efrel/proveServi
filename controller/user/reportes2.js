@@ -17,6 +17,12 @@ app.controller('reportes2', function($scope, $rootScope, $http, $filter, $locati
 
         });
 
+    $scope.con = 0;
+    $scope.conn = 0;
+    $scope.condicion = function(value){
+        $scope.con = value;
+    }
+
     $scope.generar = function(info){
         info['fecha'] = $filter('date')(info['fecha'], 'yyyy-MM-dd');
         $scope.valFecha = info['fecha'];
@@ -52,6 +58,9 @@ app.controller('reportes2', function($scope, $rootScope, $http, $filter, $locati
                 var total_costoBN = parseInt(diferenciaBN) * parseFloat(contra_costBN);
                 var total_costoC = parseInt(diferenciaColor) * parseFloat(contra_costC);
                 var total_costoMes = parseFloat(total_costoBN) + parseFloat(total_costoC);
+
+                $scope.conn = 1;
+
                 $scope.labels = ['Monto mensual','Impresiones BN', 'Impresiones Color'];
                 $scope.series = ['Contrato', 'Consumo'];
 
@@ -72,7 +81,6 @@ app.controller('reportes2', function($scope, $rootScope, $http, $filter, $locati
                         position: 'bottom'
                     }
                 }
-
                 $scope.labelsConsumoPrint = ['Impresiones BN', 'Impresiones Color'];
                 $scope.seriesConsumoPrint = ['Contrato', 'Consumo'];
 
@@ -99,6 +107,56 @@ app.controller('reportes2', function($scope, $rootScope, $http, $filter, $locati
         );
     }
 
+    $scope.generar2 = function(info){
+        info['fecha'] = $filter('date')(info['fecha'], 'yyyy-MM-dd');
+        info['fecha2'] = $filter('date')(info['fecha2'], 'yyyy-MM-dd');
+        console.log(info);
+        $http({
+            method: "POST",
+            url: "services/reportes22.php",
+            data: $.param(info),
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8'
+            }
+        }).then(
+            function success(response) {
+                $scope.reporte2 = response.data;
+                console.log($scope.reporte2);
+                var meses = [];
+                var mesBN = [];
+                var mesCl = [];
+                for(var x = 0; x < $scope.reporte2.length; x++){
+                    meses[x] = $scope.reporte2[x].mes;
+                    mesBN[x] = $scope.reporte2[x].totalMesBN;
+                    mesCl[x] = $scope.reporte2[x].totalMesCl;
+                }
+                $scope.labelsPrintMes = meses;
+                $scope.seriesPrintMes = ['Impresiones BN','Impresiones color'];
+
+                $scope.dataPrintMes = [
+                    mesBN,
+                    mesCl
+                ];
+                $scope.optionsPrintMes = {
+                    title: {
+                        display: true,
+                        text: 'Factura mensual de impresiones'
+                    },
+                    legend: {
+                        display: true,
+                        labels: {
+                            fontColor: 'rgb(0, 0, 0)'
+                        },
+                        position: 'bottom'
+                    }
+                }
+            },
+            function error(response) {
+            }
+        );
+    }
+
+
     $scope.generarImpre = function(value1,value2,value3){
         value2 = $filter('date')(value2, 'yyyy-MM-dd');
         values = {impre:value1,fecha:value2,proveedor:value3}
@@ -118,7 +176,7 @@ app.controller('reportes2', function($scope, $rootScope, $http, $filter, $locati
                 var printsumaBNfinal = 0;
                 var printsumaCfinal = 0;
                 for (var o = 0; o < $scope.imp.length; o++){
-                    printImpres[o] = $scope.imp[o].nombreImpre.substr(24);
+                    printImpres[o] = $scope.imp[o].nombreImpre;
                     printsumaBNini = parseInt(printsumaBNini) + parseInt($scope.imp[o].bn_inicio);
                     printsumaCini = parseInt(printsumaCini) + parseInt($scope.imp[o].cl_inicio);
                     printsumaBNfinal = parseInt(printsumaBNfinal) + parseInt($scope.imp[o].bn_final);
