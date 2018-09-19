@@ -16,6 +16,8 @@
     <title>{{titulo}}</title>
     <script src="./assets/js/angularjs/angular.min.js"></script>
     <script src="./assets/js/angularjs/angular-route.min.js"></script>
+    <script src="./assets/js/Chart.js"></script>
+    <script src="./assets/js/angular-chart.js"></script>
     <!-- <script src="./assets/js/jquery/jquery.min.js"></script>-->
     <script src="./assets/js/util.js"></script>
     <script src="./assets/js/Chart.boundle.js"></script>
@@ -91,6 +93,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#!reporteImpre">Reportes</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#!reportes2">Reportes2</a>
             </li>
         </ul>
         <a onclick="cerrar()">

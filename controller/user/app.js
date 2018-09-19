@@ -1,4 +1,4 @@
-var app = angular.module('Aplicacion', ["ngRoute"]);
+var app = angular.module('Aplicacion', ["ngRoute","chart.js"]);
 app.run(function($rootScope, $http) {
 
 	$rootScope.titulo = "Inicio";

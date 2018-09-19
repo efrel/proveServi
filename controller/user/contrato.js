@@ -17,6 +17,9 @@ app.controller('contrato', function($scope, $rootScope, $http, $filter, $locatio
         });
 
     $scope.var = 0;
+    $scope.cambia = function () {
+        $scope.var = 0;
+    }
     $scope.cambio = function (id) {
         for (var i = 0; i < $scope.proveedores.length; i++) {
             if($scope.proveedores[i].id_pro == id){

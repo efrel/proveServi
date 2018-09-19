@@ -10,7 +10,7 @@
                         <option ng-repeat="p in proveedores" value="{{p.id_pro}}" ng-selected="{{p.id_pro == contra.proveedor}}">{{p.nombre}}</option>
                     </select>
                     <label for="proveedor">Proveedor</label>
-                    <!--<span ng-show="!provee.$pristine && provee.tipServi.$error.required" class="error letra">Campo requerido</span>-->
+                    <span ng-show="!contrato.$pristine && contrato.proveedores.$error.required" class="error letra">Campo requerido</span>
                 </div>
             </div>
             <div class="columna-12" ng-hide="var == 0">
@@ -73,10 +73,15 @@
                     </div>
                 </div>
             </div>
-            <button type="submit" class="btn form odoo pull-right" ng-click="guardarContra(contra)">
+            <button type="submit" class="btn form odoo pull-right" ng-click="guardarContra(contra)" ng-disabled="!contrato.$valid">
                 <i class="fa fa fa-save"></i>
                 Guardar
             </button>
+            <button type="submit" class="btn form odoo pull-right" ng-hide="var == 0" ng-click="cambia()">
+                <i class="fa fa fa-times"></i>
+                Cancelar
+            </button>
+
         </form>
     </div>
 </div>
