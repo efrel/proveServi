@@ -1,5 +1,8 @@
 <?php
     include('includes/funciones.php');
+    /* Establecer el localismo al holandés 
+    $locat = "SET GLOBAL lc_time_names = 'es_ES'";
+    $json2 = select($locat,array());*/
 
     $mes = $_POST['fecha'];
     $mes2 = $_POST['fecha2'];
