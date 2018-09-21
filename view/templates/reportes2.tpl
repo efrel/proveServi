@@ -84,7 +84,12 @@
         </div>
         <div class="columna-12" ng-if="con == 2">
             <canvas id="barPrintMes" class="chart chart-bar"
-                    chart-data="dataPrintMes" chart-labels="labelsPrintMes" chart-series="seriesPrintMes" chart-options="optionsPrintMes">
+                    chart-data="dataPrintMes" chart-labels="labelsPrintMes" chart-colors="colores" chart-series="seriesPrintMes" chart-options="optionsPrintMes">
+            </canvas>
+        </div>
+        <div class="columna-12" ng-if="con == 2">
+            <canvas id="barCostMes" class="chart chart-bar"
+                    chart-data="dataCostMes" chart-labels="labelsCostMes" chart-series="seriesCostMes" chart-options="optionsCostMes">
             </canvas>
         </div>
     </div>

@@ -125,22 +125,62 @@ app.controller('reportes2', function($scope, $rootScope, $http, $filter, $locati
                 var meses = [];
                 var mesBN = [];
                 var mesCl = [];
+                var contraBN = [];
+                var contraCl = [];
                 for(var x = 0; x < $scope.reporte2.length; x++){
                     meses[x] = $scope.reporte2[x].mes;
+                    contraBN[x] = $scope.reporte2[x].print_bn_cant;
                     mesBN[x] = $scope.reporte2[x].totalMesBN;
+                    contraCl[x] = $scope.reporte2[x].print_color_cant;
                     mesCl[x] = $scope.reporte2[x].totalMesCl;
                 }
                 $scope.labelsPrintMes = meses;
-                $scope.seriesPrintMes = ['Impresiones BN','Impresiones color'];
+                $scope.seriesPrintMes = ['Contrato BN','Factura BN','Contrato Color','Factura color'];
 
                 $scope.dataPrintMes = [
+                    contraBN,
                     mesBN,
+                    contraCl,
                     mesCl
                 ];
                 $scope.optionsPrintMes = {
                     title: {
                         display: true,
-                        text: 'Factura mensual de impresiones'
+                        text: 'Factura mensual de impresiones (Unidades)'
+                    },
+                    legend: {
+                        display: true,
+                        labels: {
+                            fontColor: 'rgb(0, 0, 0)'
+                        },
+                        position: 'bottom'
+                    }
+                }
+
+                //var mesBNCost = [];
+                //var mesClCost = [];
+                var montoMes = [];
+                var contraMonto = [];
+                var diferencia = [];
+                for(var y = 0; y < $scope.reporte2.length; y++){
+                    contraMonto[y] = $scope.reporte2[y].monto;
+                    //mesBNCost[y] = parseFloat($scope.reporte2[y].total_costo_bn).toFixed(2);
+                    //mesClCost[y] = parseFloat($scope.reporte2[y].total_costo_color).toFixed(2);
+                    montoMes[y] = parseFloat($scope.reporte2[y].montoMes).toFixed(2);
+                    diferencia[y] = parseFloat($scope.reporte2[y].diferencia).toFixed(2);
+                }
+                $scope.labelsCostMes = meses;
+                $scope.seriesCostMes = ['Contrato Monto','Factura Monto','Diferencia'];
+                $scope.colores = [ '#4D5360', '#949FB1', '#46BFBD', '#803690'];
+                $scope.dataCostMes = [
+                    contraMonto,
+                    montoMes,
+                    diferencia
+                ];
+                $scope.optionsCostMes = {
+                    title: {
+                        display: true,
+                        text: 'Factura mensual de impresiones (Dolares)'
                     },
                     legend: {
                         display: true,
